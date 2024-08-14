@@ -1,9 +1,16 @@
 class Solution:
-    def finalValueAfterOperations(self, operations: List[str]) -> int:
-        sum=0
-        for i in range(len(operations)):
-            if '+' in operations[i]:
-                sum+=1
-            else:
-                sum-=1
-        return sum
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+        for i in range(len(nums)):
+            l=i+1
+            r=len(nums)-1
+            while l<=r:
+                mid=(l+r)>>1
+                if nums[mid]>nums[i]:
+                    r=mid-1
+                elif nums[mid]<nums[i]:
+                    l=mid+1
+                else:
+                    return nums[mid]
+                    
+                
