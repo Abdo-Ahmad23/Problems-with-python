@@ -1,26 +1,13 @@
 class Solution:
-    def bs(arr, target):
-        left, right = 0, len(arr) - 1
-        result = -1
-        ok = 0
-        while left <= right:
-            mid = left + (right - left) // 2
-
-            if arr[mid] >= target:
-                if arr[mid] == target:
-                    ok = 1
-                result = mid
-                right = mid - 1
+    def getSum(n):
+        return ((1+n)*n)//2
+    def arrangeCoins(self, n: int) -> int:
+        l,r,mid=1,n,0
+        while l<=r:
+            mid=(l+r)>>1
+            if Solution.getSum(mid)<=n:
+                res=mid
+                l=mid+1
             else:
-                left = mid + 1
-
-        if ok:
-            return result
-        else:
-            if result == -1:
-                return len(arr)
-            else:
-                return result
-
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        return Solution.bs(nums, target)
+                r=mid-1
+        return res
